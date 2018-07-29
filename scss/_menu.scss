@@ -1,0 +1,162 @@
+// menu button
+
+.menu-btn {
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  @include easeOut;
+
+  .btn-line {
+    width: 28px;
+    height: 3px;
+    margin: 0 0 5px;
+    background: $white;
+    @include easeOut;
+  }
+  //rotate into X with menu lines
+  &.close {
+    transform: rotate(180deg);
+
+    .btn-line {
+      // line 1-rotate
+      &:nth-child(1) {
+        //  line 3- rotate
+        // line 2 -hide
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        //  line 3- rotate
+        // line 2 -hide
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+  }
+}
+// Menu Overlay
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.8;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &-branding,
+  &-nav {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  &-nav {
+    margin: 0;
+    padding: 0;
+    background: darken($black, 8);
+    list-style: none;
+    transform: translate3d(0, -100%, 0);
+    @include easeOut;
+
+    &.show {
+      //  slide in from top
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  //branding side
+  &-branding {
+    background: $purpledream;
+    transform: translate3d(0, 100%, 0);
+    @include easeOut;
+
+    &.show {
+      //slid from bottom
+      transform: translate3d(0,0,0);
+    }
+
+    .portrait {
+      width: 300px;
+      height: 300px;
+      background: url("../img/face.jpg");
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      border: solid 3px $primary-color;
+      box-shadow: 1px 47px 157px -35px rgba(0,0,0,0.75);
+
+      .menu-icon {
+        position: relative;
+        top: 22rem;
+        right: -5rem;
+        font-size: 3rem;
+
+        &:hover {
+          color: darken($primary-color, 1);
+          @include easeOut;
+        }
+      }
+
+      .menu-icon2 {
+        position: relative;
+        top: 22rem;
+        right: -6rem;
+        font-size: 3rem;
+
+        &:hover {
+          color: darken($primary-color, 1);
+          @include easeOut;
+        }
+      }
+    }
+  }
+
+  .nav-item {
+    transform: translate3d(600px, 0, 0);
+    @include easeOut;
+
+    &.show {
+      //slide in from right
+      transform: translate3d(0, 0, 0);
+    }
+
+    &.current > a {
+      color: $purpltwo;
+    }
+  }
+
+  .nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    @include easeOut;
+
+    &:hover {
+      color: $purpltwo;
+    }
+  }
+}
+//delay each nav item slid by 0.1s
+@for $x from 1 through 4 {
+  .nav-item:nth-child(#{$x}) {
+    transition-delay: $x * 0.1s;
+  }
+}
