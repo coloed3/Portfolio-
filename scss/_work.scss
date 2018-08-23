@@ -1,0 +1,35 @@
+
+#projects{
+
+	.about-heading{
+	font-size: 1.4rem;
+	font-weight: 300;
+    margin-bottom: 2rem;
+    padding: 1.5rem 1rem;
+
+    background: rgba(131, 77, 155, 0.09);
+    letter-spacing: 2px;
+   -webkit-box-shadow: 0px 0px 77px -16px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 77px -16px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 77px -16px rgba(0,0,0,0.75);
+}
+.project{
+	display:grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 0.7rem;
+	img{
+		width:100%;
+		border: 2px black solid;
+		&:hover{
+			opacity: .7;
+			border-color: $white;
+			@include easeOut;
+		}
+	}
+}
+
+}
+
+
+
+
